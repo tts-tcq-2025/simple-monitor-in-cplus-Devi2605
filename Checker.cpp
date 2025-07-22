@@ -10,7 +10,6 @@ struct CheckResult {
     string message;
 };
 
-// Generic limit checker
 CheckResult checkLimit(float value, float min, float max, const string& paramName) {
     if (value < min) {
         return {LOW_BREACH, paramName + " is too low!"};
@@ -21,7 +20,7 @@ CheckResult checkLimit(float value, float min, float max, const string& paramNam
     return {OK, ""};
 }
 
-// Battery parameter check functions (pure)
+// function
 CheckResult checkTemperature(float temperature) {
     return checkLimit(temperature, 0, 45, "Temperature");
 }
@@ -70,6 +69,10 @@ void runTests() {
     assert(batteryIsOk(45, 80, 0.8) == true);          // On upper boundaries
 }
 
+// int main() {
+//   assert(batteryIsOk(25, 70, 0.7) == true);
+//   assert(batteryIsOk(50, 85, 0) == false);
+// }
 int main() {
     runTests();
     cout << "All tests passed!\n";
